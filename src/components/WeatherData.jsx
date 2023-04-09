@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-  </head>
-  <body>
-    <div id="root">
-      <form id="search-form">
-        <div>
-          <label for="search-input">Search Location:</label>
-          <input
-            type="text"
-            id="search-input"
-            name="search"
-            value=""
-            placeholder="Search Location"
-          />
-        </div>
-      </form>
+import React, { useEffect } from 'react';
+
+export const WeatherData = () => {
+  useEffect(() => {
+    // API key is hardcoded because there is no way to hide the key on the front end
+    /** Fetches Weather Data using a query string. */
+    async function fetchWeatherData(location) {
+    }
+  
+  }, [])
+  
+
+  return (
+    <div>
       <h2>Weather Data</h2>
-      <pre id="weather-data-output"></pre>
+      <pre id='weather-data-output'></pre>
       <div>
         <h2>Coordinates: LAT: X, LON: Y</h2>
       </div>
@@ -66,5 +58,5 @@
         <h2>London</h2>
       </div>
     </div>
-  </body>
-</html>
+  );
+};

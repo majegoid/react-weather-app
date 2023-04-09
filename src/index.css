@@ -34,3 +34,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul,
+li {
+  list-style-type: none;
+}
+
+button {
+  padding: 0.5rem;
+  background-color: #aaa;
+  color: white;
+  font-weight: bold;
+}
+
+input[type='text'] {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+
+  border-radius: 0.25rem;
+  border: 2px solid black;
+}
+input[type='text']:focus {
+  border: 2px solid hsl(209, 100%, 50%);
+  outline: none;
+}

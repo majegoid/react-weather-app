@@ -9,6 +9,8 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  background-color: #333;
+  color: white;
 }
 
 html,
@@ -49,12 +51,65 @@ button {
 
 input[type='text'] {
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 
   border-radius: 0.25rem;
   border: 2px solid black;
+  background-color: #555;
 }
 input[type='text']:focus {
   border: 2px solid hsl(209, 100%, 50%);
   outline: none;
 }
+
+.search-input-container {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+  width: fit-content;
+}
+.search-input-container * {
+  display: inline-block;
+}
+.search-input-container input {
+  width: 18.75rem;
+}
+.search-input-container button {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+
+  border-radius: 0.25rem;
+  border: 2px solid black;
+  background-color: #555;
+}
+.search-results-container {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+
+  width: 300px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+
+  background-color: #555;
+}
+.search-results-container p {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  background-color: #555;
+}
+.search-results-container p:hover {
+  cursor: pointer;
+  background-color: #aaa;
+}
+
+/* .weather-data {
+
+} */
+
+/* UTILS */
+.hidden {
+  display: none;
+}
+/* END UTILS */

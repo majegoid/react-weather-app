@@ -26,7 +26,7 @@ export const WeatherData = ({ weatherData }) => {
   };
 
   return (
-    <div>
+    <div className='weather-data'>
       <h2>Weather Data</h2>
       {/* <pre id='weather-data-output'></pre> */}
       <div>

@@ -1,53 +1,45 @@
 import { createContext, useReducer } from 'react';
-import { sampleWeatherData } from '../db/dummy';
+import { countryCapitals } from '../db/countryCapitals';
+import { countryCapitalToString } from '../utils/countryCapitalToString';
 import {
-  addWeatherDataReducer,
-  removeWeatherDataReducer,
-  updateWeatherDataReducer,
+  setSearchTermReducer,
+  setWeatherDataReducer,
 } from './reducers/reducers';
 
 export const AppContext = createContext();
 
 export const appStateReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_WEATHER_DATA':
-      return addWeatherDataReducer(state, action);
-    case 'REMOVE_WEATHER_DATA':
-      return removeWeatherDataReducer(state, action);
-    case 'UPDATE_WEATHER_DATA':
-      return updateWeatherDataReducer(state, action);
+    case 'SET_SEARCH_TERM':
+      return setSearchTermReducer(state, action);
+    case 'SET_WEATHER_DATA':
+      return setWeatherDataReducer(state, action);
     default:
       return state;
   }
 };
 
 export const AppContextProvider = ({ children }) => {
-  const { sampleId } = sampleWeatherData;
-
   const [state, dispatch] = useReducer(appStateReducer, {
-    searchValue: '',
-    weatherData: { [sampleId]: sampleWeatherData } || {},
+    searchTerm: '',
+    searchResultList: countryCapitals.map((cc) => countryCapitalToString(cc)),
+    weatherData: undefined,
   });
 
-  // timers
-  const addWeatherData = (timer) => {
+  console.log('AppContext');
+  console.log(state);
+
+  const setSearchTerm = (searchTerm) => {
     dispatch({
-      type: 'ADD_TIMER',
-      payload: timer,
+      type: 'SET_SEARCH_TERM',
+      payload: searchTerm,
     });
   };
 
-  const removeWeatherData = (timerId) => {
+  const setWeatherData = (weatherDataToSet) => {
     dispatch({
-      type: 'REMOVE_TIMER',
-      payload: timerId,
-    });
-  };
-
-  const updateWeatherData = (updatedTimer) => {
-    dispatch({
-      type: 'UPDATE_TIMER',
-      payload: updatedTimer,
+      type: 'SET_WEATHER_DATA',
+      payload: weatherDataToSet,
     });
   };
 
@@ -58,9 +50,8 @@ export const AppContextProvider = ({ children }) => {
           ...state,
         },
         actions: {
-          addWeatherData,
-          removeWeatherData,
-          updateWeatherData,
+          setSearchTerm,
+          setWeatherData,
         },
       }}
     >

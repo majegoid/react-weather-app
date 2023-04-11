@@ -1,11 +1,9 @@
 export const getDateStringFromMs = (ms = undefined) => {
-  return ms
-    ? new Date(ms).toISOString().split('T')[0]
-    : new Date().toISOString().split('T')[0];
+  const date = ms ? new Date(ms) : new Date();
+  return date.toDateString();
 };
 
 export const getTimeStringFromMs = (ms = undefined) => {
-  return ms
-    ? new Date(ms).toISOString().split('T')[1].split('.')[0]
-    : new Date().toISOString().split('T')[1].split('.')[0];
+  const date = ms ? new Date(ms) : new Date();
+  return date.toTimeString();
 };

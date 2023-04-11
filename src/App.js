@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { fetchWeatherData } from './api/queries';
+import { CurrentWeatherData } from './components/CurrentWeatherData';
 import { SearchInput } from './components/SearchInput';
-import { WeatherData } from './components/WeatherData';
 import { AppContext } from './contexts/AppContext';
 
 function App() {
@@ -9,28 +9,21 @@ function App() {
   const { weatherData, searchTerm, searchResultList } = appContext.state;
   const { setWeatherData } = appContext.actions;
 
-  useEffect(() => {
-    // async function fetcher() {
-    //   const filteredData = await fetchWeatherData(searchTerm);
-    //   console.log(filteredData);
-    //   setWeatherData(filteredData);
-    // }
-    // fetcher();
-  }, []);
-
   async function getWeatherData() {
     const filteredData = await fetchWeatherData(searchTerm);
     setWeatherData(filteredData);
   }
 
+  console.log('weatherData');
+  console.log(weatherData);
   return (
     <div className='app'>
+      <h1>Current Weather</h1>
       <SearchInput
         searchResultList={searchResultList}
         handleSearch={getWeatherData}
       />
-      {/* <SearchForm /> */}
-      <WeatherData weatherData={weatherData} />
+      <CurrentWeatherData weatherData={weatherData} />
     </div>
   );
 }

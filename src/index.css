@@ -15,12 +15,28 @@
 
 html,
 body,
-div#root,
-.app {
+div#root {
   min-height: 100vh;
   height: 100%;
   background-color: #333;
   color: white;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 1024px;
+  min-height: fit-content;
+  margin: auto;
+}
+.app h1 {
+  text-align: center;
 }
 
 body {
@@ -48,6 +64,9 @@ button {
   color: white;
   font-weight: bold;
 }
+button:hover {
+  cursor: pointer;
+}
 
 input[type='text'] {
   padding: 0.5rem;
@@ -66,7 +85,9 @@ input[type='text']:focus {
   display: flex;
   gap: 0.5rem;
   position: relative;
+
   width: fit-content;
+  margin: auto;
 }
 .search-input-container * {
   display: inline-block;
@@ -104,12 +125,63 @@ input[type='text']:focus {
   background-color: #aaa;
 }
 
-/* .weather-data {
+.weather-data {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.weather-data .location-info-header {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.weather-data .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
-} */
+  /* background-color: red; */
+}
+.weather-data .header h1 {
+  font-size: 3rem;
+}
+.weather-icon {
+  height: 4rem;
+  width: 4rem;
+  background-color: transparent;
+}
+
+.weather-data .info {
+  display: flex;
+  gap: 1rem;
+
+  width: fit-content;
+  margin: auto;
+}
+.weather-data .info .additional-info {
+  display: flex;
+  flex-direction: column;
+}
+.weather-data .info > :last-child * {
+  text-align: right;
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+.weather-data .info > :last-child h2 {
+  font-size: 1.25rem;
+}
 
 /* UTILS */
 .hidden {
   display: none;
 }
 /* END UTILS */
+
+.invert {
+  filter: brightness(0) invert(1);
+}
+
+.small-text {
+  font-size: 0.75rem;
+}

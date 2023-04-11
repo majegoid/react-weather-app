@@ -1,11 +1,7 @@
 /** Removes unused data from response payload. */
 function filterResponseData(data) {
-  // properties to remove: base, weather.icon, sys.id, sys.type, cod
+  // properties to remove: base, sys.id, sys.type, cod
   delete data['base'];
-  data['weather'] = data['weather'].map((weatherObj) => {
-    delete weatherObj['icon'];
-    return weatherObj;
-  });
   delete data['sys']['id'];
   delete data['sys']['type'];
   delete data['cod'];
@@ -24,3 +20,20 @@ export async function fetchWeatherData(location) {
   const filteredData = filterResponseData(data);
   return filteredData;
 }
+
+// Daily Weather API is not free to use...-
+/** Fetches Weather Data using a query string. */
+// export async function fetchDailyWeatherData(location, days = 8) {
+//   const url = `api.openweathermap.org/data/2.5/forecast/daily?&cnt=${days}&q=${encodeURIComponent(
+//     location
+//   )}&appid=273d18a4d56c60c9f4d62f1333c25e5c`;
+//   console.log('url');
+//   console.log(url);
+//   const res = await fetch(url);
+//   // api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
+//   const data = await res.json();
+//   console.log('data');
+//   console.log(data);
+//   // const filteredData = filterResponseData(data);
+//   // return filteredData;
+// }
